@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+</head>
+<body>
+<style>
+img {
+	border: 1px solid red;
+}
+</style>
+
+<div id="container">
+
+</div>
+
+<button id="load">Load more</button>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="../dist/index.js"></script>
+<script>
+  $('#load').click(function () {
+  	var i = 3;
+
+  	while(i--) {
+  	  $('#container').append('<img src="https://picsum.photos/200/300/?random&i=' + Date.now() + '' + i + '"/>');
+  	}
+
+  	$('#container').imageLoad(function () {
+  		console.log($('img').toArray().map((img) => $(img).height()));
+  		alert('loaded')
+  	});
+  });
+</script>
+</body>
+</html>
